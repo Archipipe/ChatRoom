@@ -1,0 +1,30 @@
+.main {
+  width: 100%;
+  height: calc(100vh - 20%);
+
+  display: flex;
+
+  padding: 0% 5%;
+  gap: 2%;
+
+  div:nth-child(1) {
+    flex: 2;
+    background-color: rgb(55, 172, 72);
+  }
+  div:nth-child(2) {
+    flex: 1;
+    background-color: rgb(155, 172, 55);
+
+    display: flex;
+    flex-direction: column;
+
+    div:nth-child(1) {
+      background-color: rgb(225, 0, 255);
+      flex: 10;
+    }
+    div:nth-child(2) {
+      background-color: rgb(255, 0, 47);
+      flex: 1;
+    }
+  }
+}
