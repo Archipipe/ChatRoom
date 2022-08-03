@@ -7,7 +7,4 @@ export default async function createUser(req :NextApiRequest,res :NextApiRespons
     if (req.method !== "GET"){
         return res.status(400).json({message: "You should use only GET requets"})
     }
-
-    const users = await prisma.user.findMany()
-    return users
 }

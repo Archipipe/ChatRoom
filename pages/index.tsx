@@ -1,19 +1,32 @@
-import { useEffect, useRef } from "react";
-import styles from "../styles/index.module.scss";
-
+import { GetStaticProps } from "next";
+import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
+import ChatRoom from "../components/chatroom";
 import Header from "../components/header";
+import IsAuth from "../components/isAuth";
 
-export default function Index() {
+export default function Index(props: any) {
+  const [cookie, setCookie, deleteCookie] = useCookies();
+  const [isAuth, setIsAuth] = useState(false);
+  useEffect(() => {
+    setIsAuth(!cookie.user);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
-      <Header></Header>
-      <div className={styles.main}>
-        <div></div>
-        <div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
+      {isAuth ? (
+        <>
+          <IsAuth />
+          <Header />
+          <ChatRoom />
+        </>
+      ) : (
+        <>
+          <Header />
+          <ChatRoom />
+        </>
+      )}
     </>
   );
 }
