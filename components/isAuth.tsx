@@ -1,16 +1,19 @@
 import styles from "../styles/isauth.module.scss";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
+import { useCookies } from "react-cookie";
 
 const error_message = {
   login: "Заполни логин, сука",
   password: "Заполни пароль, сука",
+  pizdec: "Хуйню пишешь...",
 };
 
 export default function IsAuth() {
   const [login, setLogin] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [cookies, setCookie, deleteCookie] = useCookies();
 
   async function SubmitHandler(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -26,6 +29,12 @@ export default function IsAuth() {
         password,
       }),
     });
+    const body = await response.json();
+    if (body.data) {
+      setCookie("user", body.data);
+    } else {
+      setErrorMessage(error_message.pizdec);
+    }
   }
 
   return (

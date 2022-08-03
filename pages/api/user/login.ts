@@ -13,10 +13,11 @@ export default async  function Login(req : NextApiRequest,res : NextApiResponse)
         password: req.body.password
     }
 
-    // const search = await prisma.user.findFirst({where:{
-    //     login: user.login,
-    //     password: user.password
-    // }})
+    const search = await prisma.user.findFirst({where:{
+        login: user.login,
+        password: user.password
+    }})
 
-    // console.log(search)
+    if (!search) return res.status(400).json({message: "Didn't find such a user", data: ""});
+    res.status(200).json({message: "Success", data: search.id})
 }

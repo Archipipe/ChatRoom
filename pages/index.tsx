@@ -10,12 +10,14 @@ export default function Index(props: any) {
   const [isAuth, setIsAuth] = useState(false);
   useEffect(() => {
     setIsAuth(!cookie.user);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [cookie]);
 
   return (
     <>
-      {isAuth ? (
+      {isAuth && <IsAuth />}
+      <Header />
+      <ChatRoom />
+      {/* {isAuth ? (
         <>
           <IsAuth />
           <Header />
@@ -26,7 +28,7 @@ export default function Index(props: any) {
           <Header />
           <ChatRoom />
         </>
-      )}
+      )} */}
     </>
   );
 }
