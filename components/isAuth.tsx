@@ -31,7 +31,7 @@ export default function IsAuth() {
     });
     const body = await response.json();
     if (body.data) {
-      setCookie("user", body.data);
+      setCookie("user", body.data.id);
     } else {
       setErrorMessage(error_message.pizdec);
     }

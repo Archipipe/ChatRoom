@@ -17,18 +17,6 @@ export default function Index(props: any) {
       {isAuth && <IsAuth />}
       <Header />
       <ChatRoom />
-      {/* {isAuth ? (
-        <>
-          <IsAuth />
-          <Header />
-          <ChatRoom />
-        </>
-      ) : (
-        <>
-          <Header />
-          <ChatRoom />
-        </>
-      )} */}
     </>
   );
 }

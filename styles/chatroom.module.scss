@@ -21,6 +21,9 @@
     div:nth-child(1) {
       background-color: rgb(225, 0, 255);
       flex: 10;
+
+      display: flex;
+      flex-direction: column;
     }
     div:nth-child(2) {
       background-color: rgb(255, 0, 47);

@@ -19,5 +19,5 @@ export default async  function Login(req : NextApiRequest,res : NextApiResponse)
     }})
 
     if (!search) return res.status(400).json({message: "Didn't find such a user", data: ""});
-    res.status(200).json({message: "Success", data: search.id})
+    res.status(200).json({message: "Success", data: search})
 }
